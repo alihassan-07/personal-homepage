@@ -1,0 +1,269 @@
+/* Basic Reset & Body Styles */
+* {
+	box-sizing: border-box; /* Include padding and border in element's total width/height */
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+.container {
+	font-family: 'Courier New', Courier, monospace;
+	line-height: 1.6; /* Affects the height between lines */
+	max-width: 1200px; /* Max width of the content */
+	margin: 0 auto; /* Shorthand property. 0px top and bottom. auto distributes the remaining horizontal space evenly left and right*/
+	padding: 0 20px; /* Shorthand for 0px on top and bottom, 20px left and right*/
+}
+
+/* 1️⃣  Keyframes: slide the gradient left → right → left. Creates a smooth, looping left to right animation */
+@keyframes pastel-pan {
+	0% {
+		background-position: 0% 50%; /* Show left */
+	}
+	50% {
+		background-position: 100% 50%; /* Show right */
+	}
+	100% {
+		background-position: 0% 50%; /* Back to left */
+	}
+}
+
+/* 2️⃣  Reusable utility class */
+.bg-pastel-flow {
+	/* whisper-light colours */
+	background: linear-gradient(
+		120deg, /* set a diagonal gradient from bottom left to top right*/
+		#fdfbfb 0%,
+		/* near-white */ #dedcff 25%,
+		/* hint of lavender */ #e1f7ff 50%,
+		/* airy blue */ #ffeef6 75%,
+		/* blush pink */ #ffe5e5 100%
+	); /* back to near-white */
+
+	/* make the area large so the shift is subtle */
+	background-size: 400% 400%;
+
+	/* slow, gentle drift */
+	/* 18 seconds to complete cycle, smooth, loops forever */
+	animation: pastel-pan 18s ease-in-out infinite;
+}
+
+/* Header Section */
+.header {
+	display: flex; /* Use flexbox for layout which makes it easier to arrange and align items in a container. Useful for creating flexible and dynamic layouts */
+	justify-content: space-between; /* Push name left, nav right */
+	align-items: center; /* Vertically align items */
+	padding: 1rem 0; /* Add padding top/bottom. rem stands for root em and it is a relative unit to the html element's font size */
+	gap: 2rem; /* Make sure that nav does't get too close to h1 when screen becomes narrow */
+}
+
+.header h1 {
+	font-size: 2.5rem;
+}
+
+.nav ul {
+	list-style: none; /* Remove default bullet points */
+	display: flex; /* Align list items horizontally */
+	gap: 2rem;
+}
+
+.nav a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.nav a:hover {
+	color: #007bff; /* Using a hexadecimal colour code*/
+}
+
+/* Hero Section */
+.hero {
+	display: flex; /* Use flexbox */
+	align-items: center; /* Vertically align content and image */
+	justify-content: center;
+	gap: 2rem; /* Space between content and image */
+	flex-wrap: wrap; /* Allow items to wrap on smaller screens if needed */
+	min-height: 80vh; /* Makes the height at least 80% of the height of the screen*/
+	margin: 32px;
+}
+
+.hero-content {
+	flex: 1; /* Shorthand for grow: 1, shrink: 1, basis: 0% */
+	font-size: 1.3rem;
+}
+
+.hero-content h1 {
+	font-size: 4rem;
+	margin-bottom: 0.5rem;
+}
+
+.hero-content h3 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.hero-content p {
+	font-size: 1.2rem;
+	margin-bottom: 1.5rem;
+}
+
+.hero-button {
+	display: inline-block; /* Make sure the button respects the padding/margins around it */
+	background-color: #007bff;
+	color: white;
+	padding: 10px 20px;
+	text-decoration: none; /* Get rid of the underline */
+	border-radius: 5px; /* Round the edges a bit*/
+	font-weight: bold;
+}
+
+.hero-button:hover {
+	background-color: #0056b3;
+}
+
+.hero-image {
+	width: 500px;
+	height: auto; /* Automatically calculate the height so original aspect ratio is maintained*/
+}
+
+/* Projects Section */
+.projects {
+	padding: 3rem 0;
+}
+
+.projects h2 {
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
+
+.projects-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	justify-content: center;
+}
+
+.project-item {
+	background-color: white;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	max-width: 300px; /* Ensure each card is the same width */
+}
+
+.project-image {
+	height: 160px;
+	width: auto;
+	object-fit: cover; /* Fill container completely, crop image if needed*/
+	border-top-left-radius: 8px; /* Match the rounded edges of the card */
+	border-top-right-radius: 8px;
+}
+
+.project-content {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1; /* Content should grow to fill the entire space. Useful for keeping links at the bottom when one card has more text than the others */
+}
+
+.project-content h3 {
+	margin-bottom: 0.5rem;
+}
+
+.project-text {
+	margin-bottom: 1rem;
+}
+
+.project-links {
+	display: flex;
+	gap: 0.3rem;
+	margin-top: auto;
+}
+
+.project-button {
+	display: flex;
+	align-items: center;
+	padding: 8px 12px;
+	background-color: #5c67f2;
+	color: white;
+	text-decoration: none;
+	border-radius: 4px;
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+
+.project-button i {
+	margin-right: 5px;
+}
+
+.project-button:hover {
+	background-color: #3d42a1;
+}
+
+/* Contact Section */
+.contact {
+	padding: 3rem 0;
+	text-align: center; /* Center align title and text */
+}
+
+.contact h2 {
+	font-size: 2rem;
+}
+
+.contact p {
+	margin: 3rem;
+	font-size: 1.25rem;
+}
+
+.contact-buttons {
+	display: flex; /* Align buttons horizontally */
+	justify-content: center; /* Center the buttons */
+	gap: 1rem; /* Space between buttons */
+	flex-wrap: wrap; /* Allow buttons to wrap if needed */
+}
+
+.contact-button {
+	display: flex;
+	align-items: center;
+	padding: 12px 25px;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 1rem;
+	font-weight: bold;
+	color: white;
+}
+
+.contact-button i {
+	margin-right: 8px; /* Push icon away from the text */
+}
+
+/* Specific styles for different contact buttons */
+.contact-button.email {
+	background-color: #007bff; /* Blue for email */
+}
+.contact-button.email:hover {
+	background-color: #0056b3;
+}
+
+.contact-button.linkedin {
+	background-color: #0e76a8; /* LinkedIn blue */
+}
+.contact-button.linkedin:hover {
+	background-color: #0b5f8a;
+}
+.contact-button.github {
+	background-color: #333; /* GitHub dark */
+}
+.contact-button.github:hover {
+	background-color: #222;
+}
+
+/* Footer */
+footer {
+	text-align: center;
+}
